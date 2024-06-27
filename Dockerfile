@@ -2,16 +2,16 @@ FROM node:18-buster
 
 WORKDIR /app
 
-COPY package.json yarn.lock ./
+COPY package.json package-lock.json ./
 
-RUN yarn install
+RUN npm install
 
 COPY . .
 
 RUN npx prisma generate
 
-RUN yarn build
+RUN npm run build
 
 EXPOSE 3000
 
-CMD ["yarn", "start"]
+CMD ["npm run", "start"]
